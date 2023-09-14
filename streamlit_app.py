@@ -3,8 +3,8 @@ import pickle
 import streamlit as st
 
 # Load the saved models
-loaded_model1 = pickle.load(open("D:\Datascience\Data Science Project Internships\iNeuron\Energy Efficiency Project\ENB SSM\Heating load_model.sav", 'rb'))
-loaded_model2 = pickle.load(open("D:\Datascience\Data Science Project Internships\iNeuron\Energy Efficiency Project\ENB SSM\Cooling load_model.sav", 'rb'))
+loaded_model1 = pickle.load(open("D:/Datascience/Data Science Project Internships/iNeuron/Energy Efficiency Project/ENB SSM/Heating load_model.sav", 'rb'))
+loaded_model2 = pickle.load(open("D:/Datascience/Data Science Project Internships/iNeuron/Energy Efficiency Project/ENB SSM/Cooling load_model.sav", 'rb'))
 
 def building_load_prediction(input_data):
     # Convert input_data to float and reshape
