@@ -19,14 +19,41 @@ def main():
     st.title('Energy Efficient Building Load Calculation Web App')
     
     # Collect input data from the user
-    RelativeCompactness = st.text_input('Relative compactness value')
-    SurfaceArea = st.text_input('Surface Area value')
-    WallArea = st.text_input('Wall Area value')
-    RoofArea = st.text_input('Roof Area value')
-    OverallHeight = st.text_input('Overall Height value')
-    Orientation = st.text_input('Orientation value')
-    GlazingArea = st.text_input('Glazing Area value')
-    GlazingAreaDistribution = st.text_input('Glazing Area Distribution value')
+    #RelativeCompactness = st.text_input('Relative compactness value')
+    #SurfaceArea = st.text_input('Surface Area value')
+    #WallArea = st.text_input('Wall Area value')
+    #RoofArea = st.text_input('Roof Area value')
+    #OverallHeight = st.text_input('Overall Height value')
+    #Orientation = st.text_input('Orientation value')
+    #GlazingArea = st.text_input('Glazing Area value')
+    #GlazingAreaDistribution = st.text_input('Glazing Area Distribution value')
+
+    # getting the input data from the user
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        RelativeCompactness = st.text_input('1.Relative compactness value')
+    
+    with col2:
+        SurfaceArea = st.text_input('2.Surface Area value')
+    
+    with col1:
+        WallArea = st.text_input('3.Wall Area value')
+    
+    with col2:
+        RoofArea = st.text_input('4.Roof Area value')
+    
+    with col1:
+        OverallHeight = st.text_input('5.Overall Height value')
+    
+    with col2:
+        Orientation = st.text_input('6.Orientation value')
+    
+    with col1:
+        GlazingArea = st.text_input('7.Glazing Area value')
+    
+    with col2:
+        GlazingAreaDistribution = st.text_input('8.Glazing Area Distribution value')
     
     # Create placeholders for displaying the results
     HeatingLoad_result = ""
