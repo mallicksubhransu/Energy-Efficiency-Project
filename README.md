@@ -1,4 +1,4 @@
-# Energy-Efficient-Building-Load-Calculation-app
+# Energy Efficiency
 # Project Description
 
 This study looked into assessing the heating load and cooling load requirements of buildings (that is, energy efficiency) as a function of building parameters. The buildings differ with respect to the glazing area, the glazing area distribution, and the orientation, amongst other parameters.
