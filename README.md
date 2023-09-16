@@ -24,13 +24,6 @@ The Web Application which implements this repository also provides the facility 
 This repository implements "Energy Efficiency" project work done through internship under ineuron.ai.
 With the help of this project we can estimate the heating and cooling loads required for a building for efficient energy consmption.
 
-
-
-## Authors
-
-- Subhransu Sekhar Mallick
-- Itishree Samal
-
 ## Dataset
 The dataset used for training the model is available here https://archive.ics.uci.edu/dataset/242/energy+efficiency
 ## Installation
@@ -66,3 +59,7 @@ pip install pandas==1.0.0 numpy==1.21.6
 
 - A working implementation of the project as a Web Application in this repository is available https://energy-efficient-building-load-calculation-app-3ukurqwqpujw46k.streamlit.app/
 
+## Authors
+
+- Subhransu Sekhar Mallick
+- Itishree Samal
