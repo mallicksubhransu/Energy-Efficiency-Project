@@ -60,11 +60,13 @@ def main():
     CoolingLoad_result = ""
     
     # Check if the user has clicked the prediction button
-    if st.button('Calculate Building Load'):
+    if st.button('Calculate Heating Load'):
         input_data = [RelativeCompactness, SurfaceArea, WallArea, RoofArea, OverallHeight, Orientation, GlazingArea, GlazingAreaDistribution]
         heating_load, cooling_load = building_load_prediction(input_data)
         
         HeatingLoad_result = f"Calculated Heating Load value is: {heating_load[0]}"  # Display heating load
+        # CoolingLoad_result = f"Calculated Cooling Load value is: {cooling_load[0]}"  # Display cooling load
+    if st.button('Calculate Cooling Load'):
         CoolingLoad_result = f"Calculated Cooling Load value is: {cooling_load[0]}"  # Display cooling load
     
     # Display the results in the Streamlit app
