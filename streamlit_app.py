@@ -23,8 +23,8 @@ def validate_input(input_data):
         # Attempt to convert input data to float
         input_data = [float(val) for val in input_data]
         return input_data, None  # No error message if conversion succeeds
-    except ValueError:
-        error_message = "Please enter valid numeric values for all input fields."
+    except ValueError as ve:
+        error_message = f"Invalid input value: {ve}"
         return None, error_message
 
 def main():
@@ -79,6 +79,8 @@ def main():
             else:
                 HeatingLoad_result = f"Estimated Heating Load value is: {round(heating_load, 2)}"  # Display heating load
                 CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load, 2)}"  # Display cooling load
+        else:
+            error_message = input_error_message
     
     # Display the results or error message in the Streamlit app
     if error_message:
