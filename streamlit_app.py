@@ -93,4 +93,12 @@ def main():
                 CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load, 2)}"  # Display cooling load
     
     # Display the results or error messages in the Streamlit app
-    if error
+    if error_messages:
+        for error in error_messages:
+            st.error(error)
+    else:
+        st.success(HeatingLoad_result)
+        st.success(CoolingLoad_result)
+
+if __name__ == '__main__':
+    main()
