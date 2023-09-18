@@ -25,8 +25,6 @@ def main():
     
     with col1:
         RelativeCompactness = st.text_input('1.Relative compactness value')
-        if RelativeCompactness is None:
-            st.error("Error: Relative compactness value is missing")
     
     with col2:
         SurfaceArea = st.text_input('2.Surface Area value')
@@ -58,8 +56,11 @@ def main():
         input_data = [RelativeCompactness, SurfaceArea, WallArea, RoofArea, OverallHeight, Orientation, GlazingArea, GlazingAreaDistribution]
         heating_load, cooling_load = building_load_prediction(input_data)
         
-        HeatingLoad_result = f"Estimated Heating Load value is: {round(heating_load[0], 2)}"  # Display heating load
-        CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load[0], 2)}"  # Display cooling load
+        if RelativeCompactness is None:
+            st.error("Error: Relative compactness value is missing")
+        else:        
+            HeatingLoad_result = f"Estimated Heating Load value is: {round(heating_load[0], 2)}"  # Display heating load
+            CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load[0], 2)}"  # Display cooling load
     
     # Display the results in the Streamlit app
     st.success(HeatingLoad_result)
