@@ -25,6 +25,8 @@ def main():
     
     with col1:
         RelativeCompactness = st.text_input('1.Relative compactness value')
+        if RelativeCompactness is None:
+            st.error("Error: Relative compactness value is missing")
     
     with col2:
         SurfaceArea = st.text_input('2.Surface Area value')
