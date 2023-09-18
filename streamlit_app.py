@@ -6,7 +6,7 @@ import streamlit as st
 loaded_model1 = pickle.load(open("Heating load_model.sav", 'rb'))
 loaded_model2 = pickle.load(open("Cooling load_model.sav", 'rb'))
 
-def building_load_prediction(input_data):
+#def building_load_prediction(input_data):
     try:
         # Convert input_data to float and reshape
         input_data_as_numpy_array = np.asarray(input_data, dtype=float).reshape(1, -1)
