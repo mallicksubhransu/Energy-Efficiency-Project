@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 import streamlit as st
+import warnings
 
 # Load the saved models
 loaded_model1 = pickle.load(open("Heating load_model.sav", 'rb'))
@@ -66,6 +67,12 @@ def main():
     HeatingLoad_result = ""
     CoolingLoad_result = ""
     prediction_error_message = ""
+    
+    # Initialize error_messages with an empty dictionary
+    error_messages = {}
+    
+    # Suppress the sklearn warning related to feature names
+    warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
     
     # Check if the user has clicked the prediction button
     if st.button('Estimate the Load'):
