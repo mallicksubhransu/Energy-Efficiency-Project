@@ -19,13 +19,25 @@ def building_load_prediction(input_data):
         return None, None, str(e)  # Return None for results and the error message
 
 def validate_input(input_data):
-    try:
-        # Attempt to convert input data to float
-        input_data = [float(val) for val in input_data]
-        return input_data, None  # No error message if conversion succeeds
-    except ValueError as ve:
-        error_message = f"Invalid input value: {ve}"
-        return None, error_message
+    error_messages = {}
+    
+    # Define input field names for reference
+    input_field_names = [
+        'RelativeCompactness', 'SurfaceArea', 'WallArea', 'RoofArea',
+        'OverallHeight', 'Orientation', 'GlazingArea', 'GlazingAreaDistribution'
+    ]
+    
+    for i, val in enumerate(input_data):
+        field_name = input_field_names[i]
+        try:
+            # Attempt to convert input value to float
+            float_val = float(val)
+            if float_val < 0:
+                error_messages[field_name] = f"{field_name} cannot be negative."
+        except ValueError:
+            error_messages[field_name] = f"Invalid value for {field_name}. Please enter a valid number."
+    
+    return error_messages
 
 def main():
     st.title('Energy Efficient Building Load Calculation Web App')
@@ -35,56 +47,48 @@ def main():
     # Getting the input data from the user
     col1, col2 = st.columns(2)
     
-    with col1:
-        RelativeCompactness = st.text_input('1. Relative compactness value')
+    input_field_names = [
+        'RelativeCompactness', 'SurfaceArea', 'WallArea', 'RoofArea',
+        'OverallHeight', 'Orientation', 'GlazingArea', 'GlazingAreaDistribution'
+    ]
     
-    with col2:
-        SurfaceArea = st.text_input('2. Surface Area value')
+    input_data = {}
+    error_messages = {}
     
-    with col1:
-        WallArea = st.text_input('3. Wall Area value')
-    
-    with col2:
-        RoofArea = st.text_input('4. Roof Area value')
-    
-    with col1:
-        OverallHeight = st.text_input('5. Overall Height value')
-    
-    with col2:
-        Orientation = st.text_input('6. Orientation value')
-    
-    with col1:
-        GlazingArea = st.text_input('7. Glazing Area value')
-    
-    with col2:
-        GlazingAreaDistribution = st.text_input('8. Glazing Area Distribution value')
+    for i, field_name in enumerate(input_field_names):
+        with col1 if i % 2 == 0 else col2:
+            input_data[field_name] = st.text_input(f"{i+1}. {field_name} value")
     
     # Create placeholders for displaying the results and error messages
     HeatingLoad_result = ""
     CoolingLoad_result = ""
-    error_message = ""
+    prediction_error_message = ""
     
     # Check if the user has clicked the prediction button
     if st.button('Estimate the Load'):
-        input_data = [RelativeCompactness, SurfaceArea, WallArea, RoofArea, OverallHeight, Orientation, GlazingArea, GlazingAreaDistribution]
+        for field_name, field_value in input_data.items():
+            if not field_value:
+                error_messages[field_name] = f"{field_name} is missing."
         
-        # Validate input data
-        input_data, input_error_message = validate_input(input_data)
-        
-        if input_data is not None:
-            heating_load, cooling_load, prediction_error = building_load_prediction(input_data)
+        if not error_messages:
+            input_data, input_error_messages = validate_input(list(input_data.values()))
+            error_messages.update(input_error_messages)
             
-            if prediction_error is not None:
-                error_message = f"Error during prediction: {prediction_error}"
-            else:
-                HeatingLoad_result = f"Estimated Heating Load value is: {round(heating_load, 2)}"  # Display heating load
-                CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load, 2)}"  # Display cooling load
-        else:
-            error_message = input_error_message
+            if not error_messages:
+                heating_load, cooling_load, prediction_error = building_load_prediction(list(input_data.values()))
+                
+                if prediction_error is not None:
+                    prediction_error_message = f"Error during prediction: {prediction_error}"
+                else:
+                    HeatingLoad_result = f"Estimated Heating Load value is: {round(heating_load, 2)}"  # Display heating load
+                    CoolingLoad_result = f"Estimated Cooling Load value is: {round(cooling_load, 2)}"  # Display cooling load
     
-    # Display the results or error message in the Streamlit app
-    if error_message:
-        st.error(error_message)
+    # Display the results or error messages in the Streamlit app
+    for field_name, error_message in error_messages.items():
+        st.error(f"{field_name}: {error_message}")
+    
+    if prediction_error_message:
+        st.error(prediction_error_message)
     else:
         st.success(HeatingLoad_result)
         st.success(CoolingLoad_result)
