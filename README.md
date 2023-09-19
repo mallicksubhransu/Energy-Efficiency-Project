@@ -52,7 +52,7 @@ pip install pandas==1.0.0 numpy==1.21.6
 ```
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1q66HMmmxNEYSDod1XW0fFvQSocQ1QUrR/view?usp=sharing)
+![App Screenshot](https://drive.google.com/file/d/10Mdsh7vsFOBYhDwkcbvuK_h8JEcWrRVp/view?usp=drive_link)
 
 
 ## Demo
