@@ -57,9 +57,8 @@ pip install pandas==1.0.0 numpy==1.21.6
 
 ## Demo
 
-- A working implementation of the project as a Web Application in this repository is available https://energy-efficient-building-load-calculation-app-3ukurqwqpujw46k.streamlit.app/
-
-## Authors
+- A working implementation of the project as a Web Application in this repository is available https://energy-efficiency-project-bkpeissfu2bwv7dcecwkdt.streamlit.app/
+## Contributors
 
 - Subhransu Sekhar Mallick
 - Itishree Samal
