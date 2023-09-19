@@ -4,8 +4,8 @@ import streamlit as st
 import warnings
 
 # Load the saved models
-loaded_model1 = pickle.load(open("Heating load_model.sav", 'rb'))
-loaded_model2 = pickle.load(open("Cooling load_model.sav", 'rb'))
+loaded_model1 = pickle.load(open("Heating_load_model_rf.sav", 'rb'))
+loaded_model2 = pickle.load(open("Cooling_load_model_rf.sav", 'rb'))
 
 def building_load_prediction(input_data):
     try:
