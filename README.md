@@ -52,7 +52,8 @@ pip install pandas==1.0.0 numpy==1.21.6
 ```
 ## Screenshots
 
-https://drive.google.com/file/d/10Mdsh7vsFOBYhDwkcbvuK_h8JEcWrRVp/view?usp=drive_link
+<img width="436" alt="Screenshot EE app" src="https://github.com/mallicksubhransu/Energy-Efficiency-Project/assets/114018899/d5903f4e-519b-4829-bfd8-5646147800f3">
+
 
 
 ## Demo
